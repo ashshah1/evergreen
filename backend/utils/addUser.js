@@ -5,9 +5,6 @@ require('dotenv').config();
 
 const addUser = async (userId, keyword) => {
     try {
-        // Initialize database connection
-        await initializeDatabase();
-
         // Check if user already exists
         const existingUser = await User.findOne({ where: { userId } });
         console.log(existingUser)
