@@ -3,7 +3,7 @@ const User = require('../models/User');
 const initializeDatabase = require('../config/sequelize');
 require('dotenv').config();
 
-const addUser = async (userId, keyword) => {
+const addUser = async (userId, keyword, profile) => {
     try {
         // Check if user already exists
         const existingUser = await User.findOne({ where: { userId } });
@@ -21,6 +21,7 @@ const addUser = async (userId, keyword) => {
         const newUser = await User.create({
             userId,
             keyword: hashedKeyword,
+            profile
         });
 
         console.log(`New user created with ID: ${newUser.userId}`);
@@ -35,4 +36,5 @@ const addUser = async (userId, keyword) => {
 // Run the script with new userId and keyword
 const newUserId = 'admin';
 const newKeyword = 'test';
-addUser(newUserId, newKeyword);
+const profile = "google.com"
+addUser(newUserId, newKeyword, profile);
