@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Log from './Log';
 import Leaderboard from './Leaderboard';
+import Calendar from './Calendar';
 
 const HomePage = () => {
     // const getUserInfo 
@@ -27,8 +28,9 @@ const HomePage = () => {
     return (
         <div>
             <h1>howdy {userData?.userId}</h1>
-            <Log userId={userData?.userId}/>
+            <Log userId={userData?.userId} />
             <Leaderboard />
+            <Calendar />
         </div>
     )
 }

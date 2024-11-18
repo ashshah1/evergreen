@@ -1,0 +1,42 @@
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* Create 4 columns */
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 10px; /* Add space between boxes */
+  margin: 20px;
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  height: 100px; /* Default height */
+}
+
+/* Sizes of different grid boxes */
+.size-1 {
+  grid-column: span 1; /* Default size */
+}
+
+.size-2 {
+  grid-column: span 2; /* Spans 2 columns */
+}
+
+.size-3 {
+  grid-row: span 2; /* Spans 3 columns */
+}
+
+.size-4 {
+  grid-column: span 2; /* Spans 2 columns */
+  grid-row: span 2;
+}
+
+/* Optional hover effect */
+.grid-item:hover {
+  background-color: #45a049;
+}
