@@ -3,6 +3,8 @@ import axios from 'axios';
 import Log from './Log';
 import Leaderboard from './Leaderboard';
 import Calendar from './Calendar';
+import './HomePage.css'
+
 
 const HomePage = () => {
     // const getUserInfo 
@@ -28,9 +30,11 @@ const HomePage = () => {
     return (
         <div>
             <h1>howdy {userData?.userId}</h1>
-            <Log userId={userData?.userId} />
-            <Leaderboard />
-            <Calendar />
+            {/* <Log userId={userData?.userId} /> */}
+            <div className="homepage-layout">
+                <Calendar />
+                <Leaderboard />
+            </div>
         </div>
     )
 }
