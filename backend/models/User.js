@@ -16,6 +16,10 @@ const User = sequelize.define('User', {
         type: DataTypes.INTEGER,
         defaultValue: 0,
     },
+    profile: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 }, {
     timestamps: true,
 });
