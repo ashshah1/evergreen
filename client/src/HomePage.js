@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Log from './Log';
+import Leaderboard from './Leaderboard';
 
 const HomePage = () => {
     // const getUserInfo 
@@ -26,7 +27,8 @@ const HomePage = () => {
     return (
         <div>
             <h1>howdy {userData?.userId}</h1>
-            <Log />
+            <Log userId={userData?.userId}/>
+            <Leaderboard />
         </div>
     )
 }
