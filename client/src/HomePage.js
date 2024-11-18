@@ -1,16 +1,6 @@
-import React, { useState } from 'react';
-import Log from './Log';
-
-const HomePage = () => {
-
-    return (
-        <div> 
-            <div>hi</div>
-            <Log />
-        </div>
-        
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Log from './Log';
 
 const HomePage = () => {
     // const getUserInfo 
