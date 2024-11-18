@@ -10,6 +10,7 @@ const Login = () => {
             console.log(userId, keyword)
             const { data } = await axios.post('http://localhost:5000/api/auth/login', { userId, keyword });
             localStorage.setItem('token', data.token);
+            localStorage.setItem('userId', userId)
             alert('Logged in successfully!');
         } catch (err) {
             alert('Login failed!');
