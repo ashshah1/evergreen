@@ -13,7 +13,8 @@ exports.getUserProfile = async (req, res) => {
         // Return the user's details, including profile picture URL
         res.json({
             userId: user.userId,
-            profilePictureUrl: user.profilePictureUrl,
+            profile: user.profile,
+            totalKilometers: user.totalKilometers
         });
     } catch (error) {
         console.error('Error fetching user profile:', error);
