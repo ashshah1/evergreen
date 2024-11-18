@@ -1,6 +1,14 @@
+import React, { useState } from 'react';
+import Log from './Log';
+
 const HomePage = () => {
+
     return (
-        <div> hi </div>
+        <div> 
+            <div>hi</div>
+            <Log />
+        </div>
+        
     )
 }
 
