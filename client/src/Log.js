@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Log = () => {
-    
-    console.log("HII")
+const Log = ({ userId }) => {
+
     const formatDate = (date) => {
         return date.toISOString().split('T')[0];
     };
     const [date, setDate] = useState(formatDate(new Date()))
     const [distance, setDistance] = useState(1);
-    const userId = "admin"
 
     const logWalk = async () => {
         try {
