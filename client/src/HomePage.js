@@ -1,3 +1,14 @@
+import React, { useState } from 'react';
+import Log from './Log';
+
+const HomePage = () => {
+
+    return (
+        <div> 
+            <div>hi</div>
+            <Log />
+        </div>
+        
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -25,6 +36,7 @@ const HomePage = () => {
     return (
         <div>
             <h1>howdy {userData?.userId}</h1>
+            <Log />
         </div>
     )
 }
