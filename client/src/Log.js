@@ -12,10 +12,23 @@ const Log = () => {
     const userId = "admin"
 
     const logWalk = async () => {
-        console.log("Logging walk")
-        console.log(date)
-        const { data } = await axios.post('http://localhost:5000/api/log/logWalk', { userId, distance, date });
-        console.log(data)
+        try {
+            const { data } = await axios.post('http://localhost:5000/api/log/logWalk', { userId, distance, date });
+        } catch (err) {
+            // Check if it's an error with a response from the server
+            if (err.response) {
+                // Log the custom error message from the backend
+                alert(err.response.data.message)
+            } else if (err.request) {
+                // Log the request error if no response is received
+                console.log('No response received:', err.request);
+            } else {
+                // For other types of errors
+                console.log('Error message:', err.message);
+            }
+        }
+
+
     };
 
     return (
