@@ -15,8 +15,10 @@ connectDB();
 initializeDatabase();
 
 app.use('/api/auth', authRoutes);
-app.use('/api/log', logRoutes)
+app.use('/api/log', logRoutes) 
 app.use('/api/users', userRoutes); // Add userRoutes
+app.use('/api/logs', logRoutes);
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

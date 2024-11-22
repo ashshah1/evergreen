@@ -9,43 +9,74 @@
 }
 
 .grid-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
   background-color: #781714;
   color: white;
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
+  font-weight: bold;
 }
 
 /* Sizes of different grid boxes */
 .size-1 {
   grid-column: span 1; /* Default size */
+  font-size: 30px;
 }
 
 .size-2 {
   grid-column: span 2; /* Spans 2 columns */
+  font-size: 40px;
 }
 
 .size-3 {
   grid-row: span 2; /* Spans 3 columns */
+  font-size: 40px;
 }
 
 .span-4 {
   grid-row: span 2; /* Spans 2 rows */
+  font-size: 60px;
 }
 
 .size-4 {
   grid-column: span 2; /* Spans 2 columns */
   grid-row: span 2;
-}
-
-/* Optional hover effect */
-.grid-item:hover {
-  background-color: #5f1210;
+  font-size: 60px;
+  font-weight: bold;
 }
 
 .box-number {
   font-size: x-large;
+}
+
+.flipped-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.top-diag {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.bottom-diag {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.horizontal-box {
+  grid-column: span 2; /* Spans across both columns */
+  grid-row: 2; /* Place in the second row */
+  display: flex;
+  justify-content: space-evenly; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+}
+
+.top-vertical {
+  grid-column: 1 / span 1; /* Place in column 1 */
+}
+
+.bottom-vertical {
+  grid-column: 1 / span 1; /* Place in column 1 */
 }
