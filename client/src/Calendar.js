@@ -27,7 +27,7 @@ const Calendar = ({ counts }) => {
         { id: 3, size: 2, textColor: '#D58E60', flippedColor: '#D79F79', first: '🧶', second: 3, orientation: 'horizontal' },
         { id: 4, size: 2, textColor: '#CCA777', flippedColor: '#E9BF89', first: 4, second: '🎁', orientation: 'horizontal' },
         { id: 10, size: 1, textColor: '#E7DDDC', flippedColor: '#D3CBCB', first: '🐻‍❄️', second: 10, orientation: 'horizontal' },
-        { id: 11, size: 1, textColor: '#E7DDDC', flippedColor: '#F6EBEA', first: '🥛', second: 11, orientation: 'diag' },
+        { id: 11, size: 1, textColor: '#C4B4B3', flippedColor: '#F2DCDC', first: '🥛', second: 11, orientation: 'diag' },
     ];
 
     // Handle click event on each box

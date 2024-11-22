@@ -43,15 +43,27 @@ const HomePage = () => {
         }
     };
 
+    const handleLogout = () => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('userId')
+
+        // Automatically refresh the page after successful logout
+        window.location.reload();
+    }
+
     useEffect(() => {
         fetchLogCounts();
     }, [userId]);
 
     if (!userData) return <p>Loading...</p>;
     return (
-        <div>
-            <h1>howdy {userData?.userId}</h1>
-            <Log userId={userData?.userId} />
+        <div className='homepage-page'>
+            <div className='header-bar'>
+                <p className="header-text">24Ks of Christmas!</p>
+                <button className="log-out-button" onClick={handleLogout}>log out</button>
+            </div>
+
+            {/* <Log userId={userData?.userId} /> */}
             <div className="homepage-layout">
                 <Calendar counts={counts} />
                 <Leaderboard />
