@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Leaderboard.css'
 
 const Leaderboard = () => {
 
@@ -13,7 +14,7 @@ const Leaderboard = () => {
                 setLoading(true);
                 const response = await axios.get('http://localhost:5000/api/users/all');
                 const usersData = response.data;
-                
+
                 // sort users by totalKilometers in descending order
                 usersData.sort((a, b) => b.totalKilometers - a.totalKilometers);
 
@@ -32,8 +33,8 @@ const Leaderboard = () => {
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <div>
-            <h2>Leaderboard</h2>
+        <div className='leaderboard'>
+            <div className='leaderboard-header'>Progress</div>
             <table>
                 <thead>
                     <tr>
