@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Calender.css'; // We'll create the CSS for the grid
+import AdventModal from './AdventModal';
+import axios from 'axios';
+
 
 const Calendar = ({ counts }) => {
     // Define an array of objects representing the grid cells
@@ -30,21 +33,78 @@ const Calendar = ({ counts }) => {
         { id: 11, size: 1, textColor: '#C4B4B3', flippedColor: '#F2DCDC', first: '🥛', second: 11, orientation: 'diag' },
     ];
 
+    const [isModalOpen, setModalOpen] = useState(false)
+    const [selectedDistance, setSelectedDistance] = useState(null); // State to hold clicked box ID
+    const [modalUserData, setModalUserData] = useState([])
+    const [users, setUsers] = useState([])
+
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/users/all');
+                const usersData = response.data;
+                
+                setUsers(usersData);
+                // setLoading(false);
+            } catch (err) {
+                console.log("sadness")
+                // setError(err.message);
+                // setLoading(false);
+            }
+        };
+
+        fetchUsers();
+    }, []);
+
     // Handle click event on each box
     const handleClick = (id) => {
-        alert(`Box ${id} clicked!`);
+        setModalOpen(true)
+        setSelectedDistance(id);  // Save the clicked box ID
+
+        const fetchUsers = async () => {
+            try {
+                // setLoading(true);
+                // get walks of selected distance
+                const response = await axios.get(`http://localhost:5000/api/log/distance/${id}`);
+                const walkData = response.data;
+                console.log("walk data", walkData)
+
+                // add completion date to users who've finished selected walk
+                const selectedUserData = users.map(user => {
+                    const completedUser = walkData.find(walk => walk.userId === user.userId);
+                    if (completedUser) {
+                        return {
+                            ...user,
+                            date: completedUser.date 
+                        };
+                    }
+                    return user;
+                });
+                                
+                setModalUserData(selectedUserData);
+
+                // setLoading(false);
+            } catch (err) {
+                setUsers([]);
+                // setLoading(false);
+            }
+        };
+
+        fetchUsers();
     };
 
     return (
-        <div className="calendar">
-            {gridItems.map((item) => (
-                <div
-                    key={item.id}
-                    className={`grid-item size-${item.size} ${counts.includes(item.id) ? 'flipped' : ''} `}
+        <div>
+            <div className="calendar">
+                {gridItems.map((item) => (
+                    <div
+                        key={item.id}
+                        className={`grid-item size-${item.size} ${counts.includes(item.id) ? 'flipped' : ''} `}
                     style={{ backgroundColor: counts.includes(item.id) ? item.flippedColor : '#781714' }}
-                    onClick={() => handleClick(item.id)}
-                >
-                    {counts.includes(item.id) ? (
+                        onClick={() => handleClick(item.id)}
+                    >
+                        {counts.includes(item.id) ? (
                         <div className={`flipped-content ${item.orientation}-box`} style={{ color: item.textColor }}>
                             <span className={`top-${item.orientation}`}>{item.first}</span>
                             <span className={`bottom-${item.orientation}`}>{item.second}</span>
@@ -52,9 +112,17 @@ const Calendar = ({ counts }) => {
                     ) : (
                         <span className="box-number">{item.id}</span>
                     )}
-                </div>
-            ))}
+                    </div>
+                ))}
+            </div>
+            <AdventModal 
+                open={isModalOpen} 
+                setOpen={setModalOpen} 
+                selectedDistance={selectedDistance} 
+                users={modalUserData}
+            />
         </div>
+
     );
 };
 

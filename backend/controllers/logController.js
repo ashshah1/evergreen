@@ -1,7 +1,5 @@
 const Log = require('../models/Log');
 const User = require('../models/User')
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const { sequelize } = require('../config/db');
 const { Op } = require('sequelize'); // Correct place to import Op
 
@@ -59,7 +57,6 @@ exports.logWalk = async (req, res) => {
 		// Commit the transaction if both operations succeed
 		await transaction.commit();
 
-		console.log(`New ${newWalk.count}km added for ${newWalk.userId}`);
 	} catch (error) {
 		// Rollback the transaction in case of error
 		await transaction.rollback();
@@ -92,4 +89,27 @@ exports.getLogsByUserId = async (req, res) => {
 		console.error('Error fetching log counts:', error);
 		res.status(500).json({ message: 'Server error' });
 	}
+};
+
+exports.getWalksByDistance = async (req, res) => {
+    const { distance } = req.params;
+    
+    try {
+        // get logged walks of a certain distance
+        const logs = await Log.findAll({
+            where: {
+                count: distance
+            }
+        });
+
+        // check if any logs were found
+        if (!logs || logs.length === 0) {
+            return res.status(404).json({ message: 'No walks found with the specified distance' });
+        }
+
+        res.status(200).json(logs);
+    } catch (error) {
+        console.error('Error fetching walks by distance:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
 };
