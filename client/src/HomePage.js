@@ -4,6 +4,7 @@ import Log from './Log';
 import Leaderboard from './Leaderboard';
 import Calendar from './Calendar';
 import './HomePage.css'
+import Footer from './Footer';
 
 
 const HomePage = () => {
@@ -59,15 +60,20 @@ const HomePage = () => {
     return (
         <div className='homepage-page'>
             <div className='header-bar'>
-                <p className="header-text">24Ks of Christmas!</p>
+                <div className='24ks'>24Ks of Christmas!</div>
                 <button className="log-out-button" onClick={handleLogout}>log out</button>
             </div>
 
             {/* <Log userId={userData?.userId} /> */}
             <div className="homepage-layout">
-                <Calendar counts={counts} />
+                <div className='calendar-layout'>
+                    <p className="header-text">hej! how many kilometers did you walk today?</p>
+                    <Calendar counts={counts} />
+                </div>
                 <Leaderboard />
             </div>
+            <Footer />
+
         </div>
     )
 }

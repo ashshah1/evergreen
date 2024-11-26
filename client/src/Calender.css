@@ -4,7 +4,7 @@
   grid-template-rows: repeat(5, 1fr);
   grid-gap: 5px; /* Add space between boxes */
   margin: 20px;
-  width: 950px;
+  width: 900px;
   height: 550px;
 }
 
