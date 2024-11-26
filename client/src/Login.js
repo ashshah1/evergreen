@@ -17,6 +17,7 @@ const Login = () => {
             // Automatically refresh the page after successful login
             window.location.reload();
         } catch (err) {
+            console.log(err)
             alert('Login failed!');
         }
     };
