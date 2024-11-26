@@ -1,0 +1,11 @@
+.about-us {
+  background-color: #b4d49b;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-us-header {
+  color: #69854c;
+}

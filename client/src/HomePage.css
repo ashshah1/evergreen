@@ -1,6 +1,7 @@
 .homepage-layout {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .homepage-page {
@@ -12,16 +13,20 @@
 }
 
 .header-text {
-  font-size: 25px;
+  font-size: 20px;
   color: #781714;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  margin: 15px 15px;
 }
 
 .header-bar {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px;
 }
 
 .log-out-button {
@@ -38,4 +43,9 @@
 
 .log-out-button:hover {
   transform: scale(1.1); /* Increases the size by 10% */
+}
+
+.calendar-layout {
+  display: flex;
+  flex-direction: column;
 }

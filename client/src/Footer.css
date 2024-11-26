@@ -1,0 +1,26 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #908b86;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 10px;
+  right: 15px;
+}
+
+.footer-links a {
+  padding: 10px;
+  text-decoration: none;
+  color: #908b86;
+}
+
+.footer-info {
+  position: fixed;
+  bottom: 10px;
+  left: 15px;
+}
