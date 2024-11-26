@@ -9,7 +9,7 @@ const Login = () => {
     const handleLogin = async () => {
         try {
             console.log(userId, keyword)
-            const { data } = await axios.post('http://evergreen-gamma.vercel.app/api/auth/login', { userId, keyword });
+            const { data } = await axios.post('https://evergreen-gamma.vercel.app/api/auth/login', { userId, keyword });
             localStorage.setItem('token', data.token);
             localStorage.setItem('userId', userId)
             alert('Logged in successfully!');
