@@ -13,5 +13,5 @@ exports.login = async (req, res) => {
     if (!isMatch) return res.status(401).json({ message: 'Invalid keyword' });
 
     const token = jwt.sign({ userId: user.userId }, process.env.JWT_SECRET, { expiresIn: '1d' });
-    res.json({ token });
+    res.status(200).json({ token });
 };
